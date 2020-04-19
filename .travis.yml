@@ -1,3 +1,17 @@
-lamguage:node_js
 
-sudo:false
+language: node_js
+
+sudo: false
+
+cache:
+  apt: true
+  directories:
+    - node_modules
+node_js: stable
+
+install:
+  - npm install 
+
+scripts:
+  - npm run test
+
