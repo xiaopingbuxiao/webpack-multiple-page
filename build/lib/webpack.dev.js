@@ -45,6 +45,7 @@ const devConfig = {
 						},
 					},
 				],
+				include: path.join(projectRoot, './src'),
 			},
 		],
 	},

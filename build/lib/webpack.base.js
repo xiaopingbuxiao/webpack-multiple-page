@@ -50,7 +50,8 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				use: ['babel-loader', 'eslint-loader'],
+				use: ['thread-loader', 'babel-loader', 'eslint-loader'],
+				include: path.join(projectRoot, './src'),
 			},
 			{
 				test: /\.(png|jpg|jpeg|gif)$/i,
@@ -63,6 +64,8 @@ module.exports = {
 						},
 					},
 				],
+				include: path.join(projectRoot, './src'),
+
 			},
 			{
 				test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -71,6 +74,7 @@ module.exports = {
 					limit: 10000,
 					name: 'fonts/[name]_[hash:8].[ext]', // hash:7 代表 7 位数的 hash
 				},
+				include: path.join(projectRoot, './src'),
 			},
 		],
 	},

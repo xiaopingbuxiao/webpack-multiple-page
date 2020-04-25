@@ -3,7 +3,13 @@ const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const TerserPlugin = require('terser-webpack-plugin')
+
+const smp = new SpeedMeasurePlugin()
+
+
 const baseConfig = require('./webpack.base.js')
 
 
@@ -42,10 +48,15 @@ const prodConfig = {
 						},
 					},
 				],
+				include: path.join(projectRoot, './src'),
 			},
 		],
 	},
 	optimization: {
+		minimize: true,
+		minimizer: [new TerserPlugin({
+			parallel: true,
+		})],
 		runtimeChunk: 'single',
 		splitChunks: {
 			cacheGroups: {
@@ -98,8 +109,19 @@ const prodConfig = {
 				preset: ['default', { discardComments: { removeAll: true } }],
 			},
 		}),
+		// new BundleAnalyzerPlugin(),
 	],
+	resolve: {
+		modules: [path.join(projectRoot, './node_modules')],
+	},
+	stats: {
+		modules: false,
+		children: false,
+		chunks: false,
+		chunkModules: false,
+	},
 }
 
 
 module.exports = webpackMerge(baseConfig, prodConfig)
+// module.exports = smp.wrap(webpackMerge(baseConfig, prodConfig)) // 构建速度分析
