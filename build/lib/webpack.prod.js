@@ -8,14 +8,20 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
+const PurgecssPlugin = require('purgecss-webpack-plugin')
+const glob = require('glob')
 
 const smp = new SpeedMeasurePlugin()
 
 
 const baseConfig = require('./webpack.base.js')
-
-
 const projectRoot = process.cwd()
+
+
+const PATHS = {
+	path: path.join(projectRoot, 'src'),
+}
+
 const prodConfig = {
 	output: {
 		path: path.join(projectRoot, './dist'),
@@ -122,6 +128,9 @@ const prodConfig = {
 				outputPath: './dll',
 			},
 		]),
+		// new PurgecssPlugin({ // 擦除无用css 配合vue使用时有问题
+		// 	paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
+		// }),
 		// new BundleAnalyzerPlugin(),
 	],
 	resolve: {
