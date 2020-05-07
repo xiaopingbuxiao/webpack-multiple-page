@@ -26,6 +26,7 @@ export default {
 	box-sizing: border-box;
 	height: 100%;
 	background: url('../../assets/images/vue.jpeg') no-repeat center;
+	background: url('../../assets/images/bg.png') no-repeat center;
 	filter: grayscale(30%);
 }
 </style>
