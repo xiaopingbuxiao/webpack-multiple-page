@@ -8,6 +8,6 @@ Vue.use(VueRouter)
 
 
 new Vue({
-	render: h=>h(App),
+  render: h=>h(App),
 }).$mount('#app')
 

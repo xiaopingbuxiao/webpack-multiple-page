@@ -1,24 +1,24 @@
 <template>
-	<div class="index">
-		<h1>{{ title }}</h1>
-		<span>{{ id }}</span>
-	</div>
+  <div class="index">
+    <h1>{{ title }}</h1>
+    <span>{{ id }}</span>
+  </div>
 </template>
 <script>
 import { generateId } from '../../util/index'
 export default {
-	data() {
-		return {
-			title: 'hello index',
-			id: generateId(),
-		}
-	},
-	mounted() {
-		console.log('hello index')
-	},
-	methods: {
+  data() {
+    return {
+      title: 'hello index',
+      id: generateId(),
+    }
+  },
+  mounted() {
+    console.log('hello index')
+  },
+  methods: {
 
-	},
+  },
 }
 </script>
 <style lang="scss">

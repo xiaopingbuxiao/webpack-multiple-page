@@ -8,7 +8,9 @@
     "test:cover": "nyc mocha build/test/index.js",
     "serve": "webpack-dev-server --config build/lib/webpack.dev.js",
     "dll": "webpack --config build/lib/webpack.dll.js",
-    "build": "webpack --config build/lib/webpack.prod.js"
+    "build": "webpack --config build/lib/webpack.prod.js",
+    "lint": "eslint --ext .js,.vue src/ build/",
+    "fix": "eslint --ext .js --ext .vue src/ build/ --fix"
   },
   "keywords": [],
   "author": "",
